@@ -14,7 +14,14 @@ public class ListaFile extends Finestra{
 	public ListaFile() {
 		// TODO Auto-generated constructor stub
 	}
-public void elencafile() {
+/**
+ * elencafile() si occupa di lanciare sceglicartella() per definire il path sul quale cercare i file
+ * dopodichè lancia il metodo getFileList il quale trova tutti i file nel path e li memorizza in un
+ * Array di stringhe (filetrovati). In seguito si ordina la collezione in ordine alfabetico con il metodo
+ * statico Arrays.sort. A questo punto l'elenco dei file viene inserito in uni stringbuffer per essere visualizzato
+ * nella txtArea (insieme al conteggio dei file trovati
+ */
+	public void elencafile() {
 	File dir=sceglicartella();
 	//nomifile è un tipo StringBuffer e mi serve per memorizzare temporaneamente i nomi dei file
 	//trovati per poi alla fine visualizzarli sulla txtArea della finestra.
