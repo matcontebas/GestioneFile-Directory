@@ -15,7 +15,8 @@ public class ListaFile extends Finestra{
 		// TODO Auto-generated constructor stub
 	}
 /**
- * elencafile() si occupa di lanciare sceglicartella() per definire il path sul quale cercare i file
+ * elencafile() (implementazione del metodo astratto di Finestra) provvede a lanciare la ricerca del path all'utente ed elenca nella text area i file 
+ * trovati in ordine alfabetico. In particolare si occupa di lanciare sceglicartella() per definire il path sul quale cercare i file
  * dopodichè lancia il metodo getFileList il quale trova tutti i file nel path e li memorizza in un
  * Array di stringhe (filetrovati). In seguito si ordina la collezione in ordine alfabetico con il metodo
  * statico Arrays.sort. A questo punto l'elenco dei file viene inserito in uni stringbuffer per essere visualizzato
@@ -29,21 +30,29 @@ public class ListaFile extends Finestra{
 	if (dir.getPath()!= null) {
 		//JOptionPane.showMessageDialog(finestrastruttura, "La cartella scelta è: " + dir.getPath(), "Esito ricerca",JOptionPane.INFORMATION_MESSAGE);
 		String [] filetrovati = getFileList(dir.getPath());
+		
+		//Prova oggetto Calcolofrequenze
+		CalcoloFrequenze freq=new CalcoloFrequenze(filetrovati);
+		freq.trovaoccorrenze();
+		//Fine prova oggetto CalcoloFrequenze
+		
 		//La seguente istruzione ordina gli elementi dell'Array di stringhe in ordine alfabetico
 		Arrays.sort(filetrovati);
+		//il codice seguente serve per scrivere nella textArea della finestra i nomi di file ed il conteggio finale
 		int conteggiofile=0;
 		for (String i: filetrovati) {
 			nomifile.append(i + "\n");
 			//txtArea.setText(txtArea.getText()+i+"\n");
 			conteggiofile++;
 		}
+
 		//Al termine aggiorno la txtArea per visualizzare i file trovati ed il conteggio finale
 		txtArea.setText(nomifile.toString()+"\nNumero File trovati: "+ conteggiofile);
 	}
 }
 /**
  * il metodo sceglicartella apre una finestra che permette di scegliere una cartella
- * @return il metodo restituisce una oggetto file che punta alla cartella scelta
+ * @return restituisce una oggetto file che punta alla cartella scelta
  */
 public File sceglicartella() {
 	JFileChooser cercacartella=new JFileChooser();
