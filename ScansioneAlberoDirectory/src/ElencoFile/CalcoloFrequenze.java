@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 public class CalcoloFrequenze {
 	private String [] copiaelenco;
-	private HashMap <String, Integer> frequenze =new HashMap<String, Integer>();
 
 	/**
 	 * Il costruttore prende in ingresso l'array di stringhe e lo ordina. Poi lo assegna alla variabile locale
@@ -19,7 +18,15 @@ public class CalcoloFrequenze {
 		//si assegna elenco alla variabile copiaelenco
 		setCopiaelenco(elenco);
 	}
-	public void trovaoccorrenze() {
+	/**
+	 * il metodo trovaoccorrenze parte dall'Array di Stringhe copiaelenco
+	 * ordinate in ordine alfabetico e determina le occorrenze di ogni stringa
+	 * all'interno del vettore
+	 * @return restituisce un oggetto HashMap che contiene le stringhe trovate nel vettore senza ripetizioni
+	 * e il numero di occorrenze che ha trovato
+	 *  */
+	public HashMap <String, Integer> trovaoccorrenze() {
+		HashMap <String, Integer> frequenze =new HashMap<String, Integer>();
 		int count=1;
 		int lunghezza=copiaelenco.length;
 		for (int i=0;i<lunghezza;i++) {
@@ -37,11 +44,16 @@ public class CalcoloFrequenze {
 		for (String i: frequenze.keySet()) {
 			System.out.println("Chiave: "+i + " Valore: " + frequenze.get(i));
 		}
+		return frequenze;
 	}
-	private String[] getCopiaelenco() {
+	protected String[] getCopiaelenco() {
 		return copiaelenco;
 	}
-	private void setCopiaelenco(String[] vettore) {
+	/**
+	 * Setter che inizializza la variabile copiaelenco al parametro vettore
+	 * @param vettore Arrey di stringhe in ingresso
+	 */
+	protected void setCopiaelenco(String[] vettore) {
 		this.copiaelenco = vettore;
 	}
 
