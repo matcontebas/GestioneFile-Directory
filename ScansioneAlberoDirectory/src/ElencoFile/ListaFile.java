@@ -3,6 +3,7 @@ package ElencoFile;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
 
@@ -27,13 +28,14 @@ public class ListaFile extends Finestra{
 	//nomifile è un tipo StringBuffer e mi serve per memorizzare temporaneamente i nomi dei file
 	//trovati per poi alla fine visualizzarli sulla txtArea della finestra.
 	StringBuffer nomifile=new StringBuffer();
+	StringBuffer frequenzefile=new StringBuffer();
 	if (dir.getPath()!= null) {
 		//JOptionPane.showMessageDialog(finestrastruttura, "La cartella scelta è: " + dir.getPath(), "Esito ricerca",JOptionPane.INFORMATION_MESSAGE);
 		String [] filetrovati = getFileList(dir.getPath());
 		
 		//Prova oggetto Calcolofrequenze
 		CalcoloFrequenze freq=new CalcoloFrequenze(filetrovati);
-		freq.trovaoccorrenze();
+		HashMap<String, Integer> frequenze =freq.trovaoccorrenze();
 		//Fine prova oggetto CalcoloFrequenze
 		
 		//La seguente istruzione ordina gli elementi dell'Array di stringhe in ordine alfabetico
@@ -45,9 +47,12 @@ public class ListaFile extends Finestra{
 			//txtArea.setText(txtArea.getText()+i+"\n");
 			conteggiofile++;
 		}
+		for (String i: frequenze.keySet()) {
+			frequenzefile.append("nome file: "+ i +" ripetizioni: "+ frequenze.get(i)+"\n");
+		}
 
 		//Al termine aggiorno la txtArea per visualizzare i file trovati ed il conteggio finale
-		txtArea.setText(nomifile.toString()+"\nNumero File trovati: "+ conteggiofile);
+		txtArea.setText(nomifile.toString()+"\nNumero File trovati: "+ conteggiofile + "\n"+ "\n"+frequenzefile.toString());
 	}
 }
 /**

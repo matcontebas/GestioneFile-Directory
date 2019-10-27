@@ -41,9 +41,11 @@ public class CalcoloFrequenze {
 				frequenze.put(copiaelenco[i], count);
 			}
 		}
+		//--------------provvisorio-----------------------
 		for (String i: frequenze.keySet()) {
 			System.out.println("Chiave: "+i + " Valore: " + frequenze.get(i));
 		}
+		//------------------------------------------------
 		return frequenze;
 	}
 	protected String[] getCopiaelenco() {
