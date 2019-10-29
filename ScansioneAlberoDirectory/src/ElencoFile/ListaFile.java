@@ -1,5 +1,6 @@
 package ElencoFile;
 
+import java.awt.Cursor;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,9 +31,10 @@ public class ListaFile extends Finestra{
 	StringBuffer nomifile=new StringBuffer();
 	StringBuffer frequenzefile=new StringBuffer();
 	if (dir.getPath()!= null) {
-		//JOptionPane.showMessageDialog(finestrastruttura, "La cartella scelta è: " + dir.getPath(), "Esito ricerca",JOptionPane.INFORMATION_MESSAGE);
+		//Le prossime due istruzioni trasformano il cursore in una clessidra
+		this.finestrastruttura.setCursor(new Cursor (Cursor.WAIT_CURSOR));
+		this.txtArea.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 		String [] filetrovati = getFileList(dir.getPath());
-		
 		//Prova oggetto Calcolofrequenze
 		CalcoloFrequenze freq=new CalcoloFrequenze(filetrovati);
 		HashMap<String, Integer> frequenze =freq.trovaoccorrenze();
@@ -53,6 +55,9 @@ public class ListaFile extends Finestra{
 
 		//Al termine aggiorno la txtArea per visualizzare i file trovati ed il conteggio finale
 		txtArea.setText(nomifile.toString()+"\nNumero File trovati: "+ conteggiofile + "\n"+ "\n"+frequenzefile.toString());
+		//rimetto i cursori zi cursori di default
+		this.finestrastruttura.setCursor(new Cursor (Cursor.DEFAULT_CURSOR));
+		this.txtArea.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 	}
 }
 /**
