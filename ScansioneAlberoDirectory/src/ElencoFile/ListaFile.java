@@ -30,7 +30,7 @@ public class ListaFile extends Finestra{
 	//trovati per poi alla fine visualizzarli sulla txtArea della finestra.
 	StringBuffer nomifile=new StringBuffer();
 	StringBuffer frequenzefile=new StringBuffer();
-	if (dir.getPath()!= null) {
+	if (dir!= null) {
 		//Le prossime due istruzioni trasformano il cursore in una clessidra
 		this.finestrastruttura.setCursor(new Cursor (Cursor.WAIT_CURSOR));
 		this.txtArea.setCursor(new Cursor(Cursor.WAIT_CURSOR));
