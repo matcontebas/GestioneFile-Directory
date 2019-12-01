@@ -11,6 +11,8 @@ import java.util.Stack;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import file.scrittura.ScriviFiletxt;
+
 public class ListaFile extends Finestra{
 
 	public ListaFile() {
@@ -58,6 +60,9 @@ public class ListaFile extends Finestra{
 		//rimetto i cursori zi cursori di default
 		this.finestrastruttura.setCursor(new Cursor (Cursor.DEFAULT_CURSOR));
 		this.txtArea.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		//Copio i dati in un file di testo per fare questo uso la classe ScriviFiletxt della mia libreria
+		ScriviFiletxt ArchiviaRisultati= new ScriviFiletxt();
+		ArchiviaRisultati.scrivi_salva(frequenzefile.toString());
 	}
 }
 /**
